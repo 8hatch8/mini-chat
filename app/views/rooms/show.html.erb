@@ -1,10 +1,15 @@
-<h1>Chat room</h1>
-<div id="messages">
-  <%= render @messages %>
+<h1>チャットルーム</h1>
+<%# 入力フォーム  %>
+<div class="container">
+  <form>
+    <label>message: </label><input type="text" data-behavior="room_speaker"><br />
+  </form>
+</div>
+<div class="container">
+  <%= link_to "clean up all messages", destroy_all_messages_path, method: :DELETE,
+    data: { confirm: "メッセージをすべて削除しますか？" }, class: "btn" %>
 </div>
 
-<%# 入力フォーム  %>
-<form>
-  <label>message</label><br />
-  <input type="text" data-behavior="room_speaker">
-</form>
+<div id="messages" class="container">
+  <%= render @messages %>
+</div>
